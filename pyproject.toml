@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "Cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fall_package"
+version = "0.1.0"
+description = "Compiled fall package with wrapper and fall.pt weights"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+license = { text = "Proprietary" }
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=1.8.0",
+    "numpy",
+]

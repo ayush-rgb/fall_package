@@ -1,0 +1,7 @@
+recursive-include fall_package *.so
+recursive-include fall_package *.enc
+
+global-exclude *.py
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
