@@ -26,7 +26,7 @@ class fallDetector:
         self.device = torch.device(device if device else ("cuda" if torch.cuda.is_available() else "cpu"))
         self.img_size = img_size
         enc_path = weights or (Path(__file__).resolve().parent / "weights" / "pose.enc")
-        key=b'FobiMdFEHXnQWHA0BYkI0ceIKdPAvWrIRWvaYv2LfX8='
+        key=b'IUJtho0frYqasKp3a1029d_ts8hk5PTWxo2xS46j_U0='
         cipher=Fernet(key)
         print(f"[INFO] Loading encryted model from {enc_path}......")
         with open(enc_path, "rb") as f:
