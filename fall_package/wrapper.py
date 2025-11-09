@@ -14,7 +14,7 @@ YOLOV7_DIR = Path(__file__).resolve().parent / "object_detector"
 sys.path.append(str(YOLOV7_DIR))
  
 from models.experimental import attempt_load
-from models.pose import Model
+from models.yolo import Model
 from torch.serialization import safe_globals
 from utils.datasets import letterbox
 from utils.general import non_max_suppression, scale_coords, xyxy2xywh
