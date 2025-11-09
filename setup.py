@@ -40,7 +40,7 @@ class BinaryWheel(_bdist_wheel):
                             except Exception as e:
                                 print(f"  Warning: couldn't remove {filepath}: {e}")
                 
-                print(f"🧹 Removed {cleaned} .py/.c files from wheel")
+                print(f" Removed {cleaned} .py/.c files from wheel")
                 
                 os.remove(wheel_path)
                 with zipfile.ZipFile(wheel_path, 'w', zipfile.ZIP_DEFLATED) as zip_ref:
