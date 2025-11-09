@@ -1,9 +1,9 @@
-name: Build and Upload Wheels of Fall model
+name: Build and Upload Wheels for fall detection
  
 on:
   push:
-    branches: [ main ]          
-  workflow_dispatch:             
+    branches: [ main ]
+  workflow_dispatch:
  
 jobs:
   build:
@@ -14,10 +14,21 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.10","3.11", "3.12"]
+        python-version: ["3.11", "3.12"]
  
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true         
+          fetch-depth: 0
+ 
+      - name: Verify LFS content
+        run: |
+          git lfs install
+          git lfs pull
+          echo "Listing weights directory:"
+          ls -lh fall_package/weights || true
  
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -58,4 +69,3 @@ jobs:
           path: dist/*.whl
           compression-level: 6
           overwrite: true
-
