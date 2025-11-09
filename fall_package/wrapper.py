@@ -16,7 +16,7 @@ sys.path.append(str(YOLOV7_DIR))
 from models.experimental import attempt_load
 from utils.datasets import letterbox
 from utils.general import non_max_suppression, scale_coords, xyxy2xywh
-from utils.plots import plot_one_box
+from utils.plots import plot_one_box, plot_skeleton
 from utils.torch_utils import time_synchronized  
 
  
@@ -93,7 +93,7 @@ class fallDetector:
 
                     # Draw bbox and skeleton
                     plot_one_box(xyxy, frame, label=label, color=(0, 255, 0), line_thickness=2)
-                    plot_skeleton_kpts(frame, kpts, 3)
+                    plot_skeleton(frame, kpts, 3)
 
         if show:
             cv2.imshow("Pose Detection", frame)
