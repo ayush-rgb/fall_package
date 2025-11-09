@@ -135,7 +135,7 @@ class fallDetector:
                         label = f"{self.names[cls_id]} {conf:.2f}"
 
                         plot_one_box(xyxy, frame, label=label, color=(0, 255, 0), line_thickness=2)
-                        plot_skeleton_kpts(frame, kpts, 3)
+                        plot_skeleton(frame, kpts, 3)
 
             if show:
                 cv2.imshow("Pose Detection", frame)
