@@ -14,6 +14,8 @@ YOLOV7_DIR = Path(__file__).resolve().parent / "object_detector"
 sys.path.append(str(YOLOV7_DIR))
  
 from models.experimental import attempt_load
+from models.pose import Model
+from torch.serialization import safe_globals
 from utils.datasets import letterbox
 from utils.general import non_max_suppression, scale_coords, xyxy2xywh
 from utils.plots import plot_one_box, plot_skeleton_kpts
@@ -39,7 +41,8 @@ class fallDetector:
             f.write(decrypted_data)
         
         print(f"[INFO] Decrypting and loading the model on {self.device}....")
-        self.model = attempt_load(str(temp_model_path), map_location=self.device).to(self.device)
+        with safe_globals([Model]):
+            self.model = attempt_load(str(temp_model_path), map_location=self.device).to(self.device)
         os.remove(temp_model_path)
         
         #print(f"[INFO] Loading fire-smoke model from {weights_path} on {self.device}...")
